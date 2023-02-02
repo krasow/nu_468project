@@ -1,8 +1,9 @@
+#include "hash.h"
 #include <chrono>
 using namespace std::chrono;
 
 // form https://www.google.com/search?client=firefox-b-1-d&q=store+file+into+array+in+c%2B%2B
-void readFile(const char* filename, list<string>& lines)
+void readFile(const char* filename, vector<string>& lines)
 {
     lines.clear();
     ifstream file(filename);
@@ -13,7 +14,7 @@ void readFile(const char* filename, list<string>& lines)
 
 int main(){
     // stores the list of dictionary
-    std:vector<string> dictionary; 
+    std::vector<string> dictionary; 
     readFile("wordlist.10000", dictionary);
 
     // stores the list of passwords wanting to crack

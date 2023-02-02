@@ -1,9 +1,11 @@
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <list>
 #include <vector>
+#include <boost/range/irange.hpp>
 
-#DEFINE MAX_LENGTH 25
+#define MAX_LENGTH 25
 
 using namespace std;
 
