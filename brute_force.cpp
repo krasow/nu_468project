@@ -1,27 +1,8 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <map>
-#include <chrono>
-#define ll long long
+#include "hash.h"
 
 using namespace std;
 
-void readFile(const char* filename, vector<string>& lines)
-{
-    lines.clear();
-    ifstream file(filename);
-    string s;
-    while (getline(file, s))
-        lines.push_back(s);
-    cout << "Done Reading" << endl;
-}
 
-
-bool equal_passwords(string guess, string answer) {
-    return (answer.compare(guess) == 0);
-}
 
 vector<string> next_prefixes(vector<string> prev) {
     string possible = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()`~,./?<>;:'[]{}\\|-_=+";
@@ -38,16 +19,13 @@ vector<string> next_prefixes(vector<string> prev) {
 }
 
 
-void crack() {
+void crack_cpu(std::vector<string> passwords) {
     int flag = 1;
     int max_length = 25;
     map <int, vector<string> > prefixes;
     vector<string> empty_string;
     empty_string.push_back("");
     prefixes[0] = empty_string;
-
-    vector<string> passwords;
-    readFile("cracked.txt", passwords);
 
     // For each password
     for (auto& answer : passwords) {
@@ -79,13 +57,4 @@ void crack() {
     }
 
     
-}
-
-int main () {
-    auto start = chrono::high_resolution_clock::now();
-    crack();
-    auto stop = chrono::high_resolution_clock::now();
-    auto duration_brute_force = chrono::duration_cast<chrono::microseconds>(stop - start).count();
-    cout << duration_brute_force << endl;
-    return 0;
 }
